@@ -1,7 +1,4 @@
 # Day 1. Sonar Sweep - Part One and Part Two
-
-# running: python -m doctest -v day_1.py
-
 # As the submarine drops below the surface of the ocean, it automatically performs 
 # a sonar sweep of the nearby sea floor. On a small screen, the sonar sweep report 
 # (your puzzle input) appears: each line is a measurement of the sea floor depth as 
@@ -23,7 +20,6 @@
 
 # Considering every single measurement isn't as useful as you expected: there's 
 # just too much noise in the data.
-
 # Your goal now is to count the number of times the sum of measurements in this 
 # sliding window increases from the previous sum. So, compare A with B, then 
 # compare B with C, then C with D, and so on. Stop when there aren't enough measurements 
@@ -45,61 +41,42 @@ def read_input(path: str):
 def solution1(arr: List[str]):
     '''
     Compare elements -> sum
-
     >>> solution1([199, 200, 208, 210, 200, 207, 240, 269, 260, 263])
     7
-    
     >>> solution1([199, 200])
     1
-    
     >>> solution1([200, 199])
     0
-
-    >>> solution1([200])
-    0
-
     '''
     return sum([arr[i] > arr[i-1] for i in range(1, len(arr))]) if arr and len(arr) > 1 else 0
 
 def solution2(arr: List[str]):
     '''
     Compare elements -> sum
-
     >>> solution2([199, 200, 208, 210, 200, 207, 240, 269, 260, 263])
     5
-
     >>> solution2([1, 1, 1, 2, 2])
     2
-
     >>> solution2([1, 1, 1, 1, 1])
     0
-    
     >>> solution2([199, 200])
     0
-    
     >>> solution2([200, 199])
     0
-
     >>> solution2([200])
     0
-
     '''
-
     if not arr or len(arr) <= 3:
         return 0
-
     ans = 0
     window = []
-
     for i in range(len(arr)):
-        if len(window) < 3:
-            window.append(arr[i])
+        if len(window) < 3: window.append(arr[i])
         else:
             current_sum = sum(window)
             window.pop(0)
             window.append(arr[i])
             ans += current_sum < sum(window)
-    
     return ans
 
 if __name__ == "__main__":
