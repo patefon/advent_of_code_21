@@ -1,6 +1,5 @@
 # Day 9: Smoke Basin - Part One and Part Two
 
-from collections import defaultdict
 import functools
 import sys
 import timeit
