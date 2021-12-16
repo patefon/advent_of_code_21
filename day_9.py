@@ -1,8 +1,7 @@
-# Day 8: Seven Segment Search - Part One and Part Two
+# Day 9: Smoke Basin - Part One and Part Two
 
 from collections import defaultdict
 import functools
-import operator
 import sys
 import timeit
 import heapq
